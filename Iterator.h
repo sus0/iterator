@@ -1,6 +1,10 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
-//#define NULL 0
+
+#include <stack>
+#include <utility>
+
+#define NULL 0
 class MenuComponent;
 
 class Iterator {
@@ -14,12 +18,17 @@ public:
 
 	Iterator(MenuComponent*);
 	Iterator(MenuComponent*, MenuComponent*);
+	Iterator(MenuComponent*, MenuComponent*, std::stack< std::pair< MenuComponent*, int> >);
+	void processRoot();
 	//Iterator();
 	//virtual ~Iterator();
 
 protected:
 	MenuComponent* root_;
 	MenuComponent* cursor_;
+	std::stack< std::pair< MenuComponent*, int> > buf_;
+private:
+	
 };
 
 #endif

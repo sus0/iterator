@@ -1,6 +1,6 @@
 CXXFLAGS= -O -Wall -g -std=c++0x -MMD
 CXX=g++
-OBJECTS = MenuComponent.o MenuItem.o Menu.o IteratorTestHarness.o
+OBJECTS = Iterator.o MenuComponent.o MenuItem.o Menu.o IteratorTestHarness.o
 DEPENDS = ${OBJECTS:.o=.d}
 EXEC=menu
 

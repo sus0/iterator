@@ -46,22 +46,11 @@ void MenuItem::print ( ostream& sout ) const {
 class MenuItem::MenuItemIterator : public Iterator{
 public:
 	MenuItemIterator(MenuComponent* root) : Iterator(root, root) {}
-	MenuItemIterator(MenuComponent* root, MenuComponent* cursor) : Iterator(root, cursor) {}
-	//virtual Iterator& operator++() {
-	//	if (cursor_ == root_) {
-	//		cursor_ = NULL;
-	//	}
-	//	return *this;
-	//}
-	//virtual Iterator& operator++(int){
-	//	MenuItemIterator old = MenuItemIterator(root_, cursor_);
-	//	++(*this);
-	//	return old;
-	//}
+	MenuItemIterator(MenuComponent* root, MenuComponent* cursor) : Iterator(root, cursor){}
 };
 
 Iterator MenuItem::begin() {
-	return MenuItemIterator(this);
+	return MenuItemIterator(this, this);
 }
 
 Iterator MenuItem::end() {

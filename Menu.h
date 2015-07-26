@@ -24,8 +24,8 @@ public:
     virtual void menuDepthInc();
     virtual int size() const;
 	class MenuIterator;
-	virtual Iterator begin();
-	virtual Iterator end();
+	Iterator begin();
+	Iterator end();
 protected:
     virtual void print ( std::ostream& ) const;
     

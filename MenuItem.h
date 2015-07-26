@@ -19,8 +19,8 @@ public:
     virtual int calories() const;
     virtual void caloriesIs( int c );
 	class MenuItemIterator;
-	virtual Iterator begin();
-	virtual Iterator end();
+	Iterator begin();
+	Iterator end();
 	
 protected:
     virtual void print ( std::ostream& ) const;

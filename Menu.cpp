@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <stack>
-#include <utility>
 #include "Menu.h"
 
 using namespace std;
@@ -78,60 +76,15 @@ void Menu::print ( ostream& sout ) const {
 
 class Menu::MenuIterator : public Iterator {
 public: 
-	MenuIterator(MenuComponent* root) : Iterator(root) {
-		processNewRoot(root);
-	}
-	MenuIterator(MenuComponent* root, MenuComponent* cursor, stack< pair< MenuComponent*, int> > buf):
-		Iterator(root, cursor), buf_(buf) {}
-	virtual Iterator& operator++() {
-		while (!buf_.empty()) {
-			pair<MenuComponent*, int> curr = buf_.top();
-			buf_.pop();
-			int size = curr.first->numChildren();
-			if (size == 0) {
-				cursor_ = curr.first;
-				return *this;
-			}
-			// it's a root
-			else {
-				int count = curr.second;
-				if (count == size) {
-					continue;
-				}
-				else {
-					buf_.push(pair<MenuComponent*, int>(curr.first, (count + 1)));
-					MenuComponent* temp;
-					temp = curr.first->getChild(count);
-					processNewRoot(temp);
-					return *this;
-				}
-			}
-		}
-		cursor_ = NULL;
-		return *this;
-	}
-	virtual Iterator& operator++(int) {
-		MenuIterator old(root_, cursor_, buf_);
-		++(*this);
-		return old;
-	}
-
-private:
-	stack< pair< MenuComponent*, int> > buf_;
-	void processNewRoot(MenuComponent* root) {
-		MenuComponent* comp = root;
-		while (comp->numChildren() != 0) {
-			buf_.push(pair<MenuComponent*, int>(comp, 1));
-			comp = comp->getChild(0);
-		}
-		cursor_ = comp;
-	}
+	MenuIterator(MenuComponent* root, MenuComponent* cursor) : Iterator(root, cursor) {}
 };
 
 Iterator Menu::begin() {
-	return MenuIterator(this);
+	Iterator it =  MenuIterator(this, this);
+	it.processRoot();
+	return it;
 }
 
 Iterator Menu::end() {
-	return Iterator(this, NULL);
+	return MenuIterator(this, NULL);
 }
