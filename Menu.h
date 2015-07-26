@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "MenuComponent.h"
-
+#include "Iterator.h"
 
 class Menu : public MenuComponent {
 public:
@@ -23,7 +23,9 @@ public:
 	// implement shared operations
     virtual void menuDepthInc();
     virtual int size() const;
-    
+	class MenuIterator;
+	virtual Iterator begin();
+	virtual Iterator end();
 protected:
     virtual void print ( std::ostream& ) const;
     

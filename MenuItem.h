@@ -5,6 +5,7 @@
 #include <string>
 
 #include "MenuComponent.h"
+#include "Iterator.h"
 
 class MenuItem : public MenuComponent {
 public:
@@ -17,7 +18,10 @@ public:
     virtual void priceIs( float p );
     virtual int calories() const;
     virtual void caloriesIs( int c );
-	    
+	class MenuItemIterator;
+	virtual Iterator begin();
+	virtual Iterator end();
+	
 protected:
     virtual void print ( std::ostream& ) const;
     
