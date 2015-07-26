@@ -1,0 +1,16 @@
+m 0 "firstMenu"
+i 1 "fuckya1" 500 500 true
+a 0 1
+i 1 "fuckya2" 500 500 true
+a 0 1
+i 1 "fuckya3" 500 500 true
+a 0 1
+i 1 "fuckya4" 500 500 true
+a 0 1
+i 1 "fuckya5" 500 500 true
+a 0 1
+i 1 "fuckya6" 500 500 true
+a 0 1
+
+p 0
+d

@@ -1,0 +1,11 @@
+m 0 "firstMenu"
+m 3 "thirdMenu"
+i 4 "fuckya" 500 500 true
+a 3 4
+i 1 "firstItem" 500 500 true
+m 2 "secondMenu"
+a 0 1
+a 2 0
+a 2 3
+p 2
+d

@@ -1,0 +1,12 @@
+m 0 "c"
+i 1 "bb" 0 0 false
+i 2 "bbb" 0 0 false
+i 3 "bbbb" 0 0 false
+i 4 "bbbbb" 0 0 false
+m 5 "d"
+a 5 1
+a 5 2
+a 5 3
+a 0 5
+p 0
+d
