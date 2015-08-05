@@ -26,15 +26,21 @@ MenuComponent* Iterator::operator->() const{
 
 Iterator& Iterator::operator++() {
 	while (!buf_.empty()) {
+		// pop the top item on the stack and deal with it
 		pair<MenuComponent*, int> curr = buf_.top();
 		buf_.pop();
 		MenuComponent* currItem = curr.first;
 		int count = curr.second;
+		// if we've already pointed to it
 		if (count >= 0) {
+			// if we've already visited all children, then ditch this item and continue loop
 			if (count >= currItem->numChildren()) continue;
+			// get the child to be visited
 			MenuComponent* childItem = currItem->getChild(count);
+			// modify parent's and child's count and push them on stack
 			buf_.push(pair<MenuComponent*, int>(currItem, (count + 1)));
 			buf_.push(pair<MenuComponent*, int>(childItem, 0));
+			// point to the child
 			cursor_ = childItem;
 			return *this;
 		}
